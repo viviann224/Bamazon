@@ -8,7 +8,7 @@ CREATE TABLE products(
   item_id INTEGER(10) NOT NULL,
   product_name VARCHAR(20) NOT NULL,
   department_name VARCHAR(20) NOT NULL,
-  price INTEGER DEFAULT 0,
+  price decimal(10,2) DEFAULT 0,
   stock_quantity INTEGER DEFAULT 0
  -- PRIMARY KEY (id)
 );
@@ -42,6 +42,9 @@ VALUES ("00009", "Dog Shampoo", "Dog Depo", 5, 13);
 
 INSERT INTO products (item_id, product_name, department_name, price, stock_quantity) 
 VALUES ("000010", "Frying Pan", "House Depo", 50, 7);
+
+INSERT INTO products (item_id, product_name, department_name, price, stock_quantity) 
+VALUES ("000010", "Napkins", "House Depo", 0.50, 7);
 
 
 

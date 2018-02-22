@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/viviann224/Bamazon#readme",
   "dependencies": {
+    "columnify": "^1.5.4",
     "inquirer": "^5.1.0",
     "mysql": "^2.15.0"
   }
