@@ -1,0 +1,31 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "Amazon-like storefront with mySQL. The program will take in orders from customers and deplete stock from inventory",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viviann224/Bamazon.git"
+  },
+  "keywords": [
+    "Bamazon",
+    "MySQL",
+    "Inquirer",
+    "Sequel",
+    "Pro",
+    "MAMP"
+  ],
+  "author": "Vivian Tuong Nguyen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/viviann224/Bamazon/issues"
+  },
+  "homepage": "https://github.com/viviann224/Bamazon#readme",
+  "dependencies": {
+    "inquirer": "^5.1.0",
+    "mysql": "^2.15.0"
+  }
+}
