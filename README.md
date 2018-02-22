@@ -50,12 +50,9 @@ This is the first version of Aller-Jeeves
 This project is licensed under GitHub.
 
 **AUTHOR**:
--Matthew Steward - Initial work
--PM Milam IV - Initial work
--Vivian Tuong Nguyen - Initial work
--Kyle Carter - Initial work
+- Vivian Tuong Nguyen - Initial work
 
 
 **ACKNOWLEDGMENTS**:
-All rights are reserved to Matthew Steward, Kyle Carter, PM Milam IV, Vivian Tuong Nguyen. Do not alter or manipulate content and images from the authors listed above.
+All rights are reserved to Vivian Tuong Nguyen. Do not alter or manipulate content and images from Vivian Tuong Nguyen
 Copyright   :copyright: 2018
