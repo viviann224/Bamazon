@@ -14,6 +14,10 @@ Customer Level | Manager Level
  lets user buy an item  |   lets the user
 ------------ | -------------
  lets the user ask for an amount | hello
+
+ 
+ 
+ 
 Aller-Jeeves is a food application created to help alleviate the stress felt by individuals and families with dietary and/or allergy restrictions. Whether it is to find something new and delicious or wanting to find recipes for everyone to enjoy together. Next time someone ask what can you eat, introduce them to Aller-Jeeves, where our recipes will meet your needs.
 
 Aller-Jeeves was created to showcases the use of APIs from Yummly and Neutrino by pulling AJAX requests to create Aller-Jeeves. Learning to use JavaScript Animation, Anime JS, and deploying from Firebase Database. Aller-Jeeves is a group effort to provide a polished UI and specific search options for the user.
