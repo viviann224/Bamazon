@@ -5,7 +5,13 @@ The program should run automatically.
 If the program is not running automatically, please make sure you have all the prerequisites listed below.
 
 **STATEMENT OF PURPOSE**:
-Node.js  and MySQL
+BAMAZON is a store like Amazon where the program runs on Node.js and uses the SQL database. Here at BAMAZON there are two modes, a customer and a manager level.
+
+Customer Level | Manager Level
+------------ | -------------
+* Lets the user either BUY or QUIT| * Lets the user  View Products for Sale, View Low Inventory, Add to inventory, Add New Products, or Quit
+* lets user buy an item | *  lets the user
+* lets the user ask for an amount |
 Aller-Jeeves is a food application created to help alleviate the stress felt by individuals and families with dietary and/or allergy restrictions. Whether it is to find something new and delicious or wanting to find recipes for everyone to enjoy together. Next time someone ask what can you eat, introduce them to Aller-Jeeves, where our recipes will meet your needs.
 
 Aller-Jeeves was created to showcases the use of APIs from Yummly and Neutrino by pulling AJAX requests to create Aller-Jeeves. Learning to use JavaScript Animation, Anime JS, and deploying from Firebase Database. Aller-Jeeves is a group effort to provide a polished UI and specific search options for the user.
