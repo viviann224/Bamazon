@@ -28,6 +28,7 @@ connection.connect(function(err) {
 
 // function which prompts the user to choose option from menu or quit
 function start() {
+  console.log("\n=======================Main Page=======================");
   inquirer
     .prompt({
       name: "menu",

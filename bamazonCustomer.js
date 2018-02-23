@@ -18,14 +18,14 @@ var connection = mysql.createConnection({
 
 // connect to the mysql server and sql database
 connection.connect(function(err) {
+  //if error occurs, throw error for the user
   if (err) throw err;
-  console.log("logged in");
-  // run the start function after the connection is made to prompt the user
-  
+  //else run the start function after the connection 
+  //is made to prompt the user
   start();
 });
 
-// function which prompts the user for what action they should take
+// function which prompts the user for what action they should take (buy or quit)
 function start() {
   console.log("\n=======================Main Page=======================");
   inquirer
@@ -36,12 +36,13 @@ function start() {
       choices: ["BUY", "QUIT"]
     })
     .then(function(answer) {
-      // based on their answer, either call the bid or the post functions
+      //if the user wants to buy display the sales items and begin buying
       if (answer.buyOrQuit.toUpperCase() === "BUY") 
       {
         displaySaleItems();
         
       }
+      //else terminate the program and tell the user goodbye
       else {
         console.log("\nTHAT was painful to hear, Please come again to BAMAZON!\n");
         connection.end();
@@ -49,11 +50,11 @@ function start() {
     });
 }
 
-function endConnection()
-{
-  connection.end();
-}
-
+//request order will ask the user for an item and quantity
+//requestOrder will then check if there is enough in inventory
+//if there is enough in inventory go ahead and bill the user and update inventory
+//else will tell user there was not enough in inventory and takes the user back to the
+//main menu to make new decision
 function requestOrder()
 {
   // query the database for all items being auctioned
@@ -67,6 +68,7 @@ function requestOrder()
           message: "Which item do you want?",
           name: "choice",
           type: "list",
+          //goes through the database and displays all items for user to choose
           choices: function() 
           {
             var choiceArray = [];
@@ -83,6 +85,7 @@ function requestOrder()
           type: "input",
           message: "How many would you like?",
           validate: function(value) {
+          //checks the user input and verifies that is a valid integer number
           if (isNaN(value) === false) {
             return true;
           }
@@ -90,21 +93,20 @@ function requestOrder()
          }
         }
       ])
+      //after the user answers the series of question the program checks the inventory
       .then(function(answer) 
       {
-         // get the information of the chosen item
-        //var chosenItem;
+         //uses a linear search to find the item in the database and store it for later use
         for (var i = 0; i < results.length; i++) 
         {
-          if (results[i].product_name === answer.choice) {
-            var chosenItem = results[i];
-          }
+          if (results[i].product_name === answer.choice) 
+          {  var chosenItem = results[i];}
         }
 
-        // determine if bid was high enough
+        //if the stock is more than the user's request, go ahead and start the billing process
         if (chosenItem.stock_quantity >= parseInt(answer.bid)) 
         {
-          // bid was high enough, so update db, let the user know, and start over
+          //go ahead and talk to the database to update the amount
           connection.query(
             "UPDATE products SET ? WHERE ?",
             [
@@ -116,42 +118,49 @@ function requestOrder()
               }
             ],
             function(error) {
+              //if there is an error go ahead and throw the error for the user
               if (error) throw err;
+              //else lets calculate the total for the user
               var total=parseFloat(answer.bid*chosenItem.price);
+              //display the bill for the user and thank them for shopping at BAMAZON
               console.log("\nYour TOTAL is: $"+total);
               console.log("Thank you for buying at BAMAZON. Order placed successfully!");
+              //then go to the main menu
               start();
             }
           );
         }
-        else {
-          // bid wasn't high enough, so apologize and start over
+        else 
+        {
+          //there was an insufficent quanntity based on the requested amount
+          //apologize to the user and and start over
           console.log("\nInsufficient quantity!\nI am sorry we do not have enough in inventory. Please find something else :(.\n ..going back to the main page");
+          //go to the main menu for the user to decide the next action
           start();
         }
         
-      });
-    });
+     });
+  });
 }
 
-
-//display all items for sale
+//function display all items for sale
 function displaySaleItems() 
 {
   console.log("diplaying all items for sale...\n");
+  //go ahead and talk to the database to search for all the items in the database
   connection.query("SELECT * FROM products", function(err, res) {
+  	//if there is an error go ahead and throw an error to the user
     if (err) throw err;
-
-console.log("item_id  product_name  department_name  price  stock_quantity");
-console.log("-------------------------------------------------------------");
+    //displays the main content
+	console.log("item_id  product_name  department_name  price  stock_quantity");
+	console.log("-------------------------------------------------------------");
     for (var i = 0; i < res.length; i++) 
     {
-
-      // Include the ids, names, and prices of products for sale.
+      //displays the ids, names, and prices of products for sale.
       console.log(res[i].item_id + " \t " + res[i].product_name + " \t " + res[i].department_name + " \t " + res[i].price + " \t " + res[i].stock_quantity);
     }
     console.log("-------------------------------------------------------------");
-
+    //then calls display order for the user to order an item
     requestOrder();
   });
 }
