@@ -143,17 +143,15 @@ function displaySaleItems()
     if (err) throw err;
 
 console.log("item_id  product_name  department_name  price  stock_quantity");
+console.log("-------------------------------------------------------------");
     for (var i = 0; i < res.length; i++) 
     {
 
       // Include the ids, names, and prices of products for sale.
       console.log(res[i].item_id + " \t " + res[i].product_name + " \t " + res[i].department_name + " \t " + res[i].price + " \t " + res[i].stock_quantity);
     }
-    console.log("-----------------------------------");
+    console.log("-------------------------------------------------------------");
 
     requestOrder();
-
-
-
   });
 }
