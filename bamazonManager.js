@@ -32,7 +32,7 @@ function start() {
       name: "menu",
       type: "rawlist",
       message: "[MANAGER LEVEL] Would you like to do?",
-      choices: ["View Products for Sale", "View Low Inventory","Add to Inventory", "Add New Product"]
+      choices: ["View Products for Sale", "View Low Inventory","Add to Inventory", "Add New Product", "QUIT"]
     })
     .then(function(answer) 
     {
@@ -50,7 +50,11 @@ function start() {
             updateInventory();
             break;
         case "Add New Product":
-            console.log("add new Inventory");
+            createInventory();
+            break;
+        case "QUIT":
+            console.log("\nTHAT was painful to hear, Please come again to BAMAZON!\n");
+            connection.end();
             break;
         default:
             start();
@@ -58,6 +62,93 @@ function start() {
       }
 
     });
+}
+
+function createInventory() 
+{
+  connection.query("SELECT * FROM products", function(err, results) 
+  {
+    if (err) throw err;
+   // prompt for info about the item being put up for auction
+  inquirer
+    .prompt([
+      {
+        name: "name",
+        type: "input",
+        message: "What item do you want to add?",
+        //check to see if item is already in inventory
+        validate: function(value) 
+        {
+          for (var i = 0; i < results.length; i++) 
+          {
+            if(results[i].product_name.toLowerCase()==value.toLowerCase())
+            { 
+              console.log("\nI am sorry that is already in inventory, please try again!");
+              return false;
+            }
+          }
+          return true;
+        }
+      },
+      {
+        name: "department",
+        type: "input",
+        message: "Which department is the item in?",
+        //check to see if item is already in inventory
+        validate: function(value) 
+        {
+            if(value=="")
+            { 
+              console.log("\nI am sorry that was not a valid department, please try again!");
+              return false;
+            }
+          return true;
+        }
+      },
+       {
+        name: "price",
+        type: "input",
+        message: "How much for each item?",
+        validate: function(value) {
+          if (isNaN(value) === false) {
+            return true;
+          }
+          console.log("\nI am sorry that was not a valid value for the item, please try again!");
+          return false;
+        }
+      },
+      {
+        name: "inventory",
+        type: "input",
+        message: "How many do you have in inventory to start?",
+        validate: function(value) {
+          if (isNaN(value) === false) {
+            return true;
+          }
+          console.log("\nI am sorry that was not a valid value amount, please try again!");
+          return false;
+        }
+      },
+    ])
+    //if this is a new item lets go ahead and add it!
+    .then(function(answer) 
+    {
+      console.log("Creating a new item...\n");
+      var query = connection.query(
+        "INSERT INTO products SET ?",
+        {
+          product_name: answer.name,
+          department_name: answer.department,
+          price: answer.price,
+          stock_quantity: answer.inventory
+        },
+        function(err, res) {
+          console.log(res.affectedRows + " product inserted!\n");
+          start();
+        }
+      );
+    });
+  });
 }
 
 function updateInventory() 
@@ -85,8 +176,9 @@ function updateInventory()
       {
         name: "amt",
         type: "input",
-        message: "How many do you want to add?",
-        validate: function(value) {
+        message: "How many do you want to add to the current inventory?",
+        validate: function(value) 
+        {
           if (isNaN(value) === false) {
             return true;
           }
