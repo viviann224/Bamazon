@@ -117,6 +117,8 @@ function requestOrder()
             ],
             function(error) {
               if (error) throw err;
+              var total=parseFloat(answer.bid*chosenItem.price);
+              console.log("\nYour TOTAL is: $"+total);
               console.log("Thank you for buying at BAMAZON. Order placed successfully!");
               start();
             }
