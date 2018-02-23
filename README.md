@@ -7,7 +7,7 @@ If the program is not running automatically, please make sure you have all the p
 **STATEMENT OF PURPOSE**:
 BAMAZON is a store like Amazon where the program runs on Node.js and uses the SQL database. Here at BAMAZON there are two modes, a customer and a manager level.
 
-<p align="center"> ![files](/readMeImg/files.png | width=40) </p>
+<p align="center"> ![files](/readMeImg/files.png)</p>
 
 
 Customer Level | Manager Level
@@ -23,6 +23,7 @@ Customer Level | Manager Level
  
 **Customer Level**
 > **BUY:** The inventory will display with the corresponding an id, name, department, price, and quantity then the user will be asked a list of items to choose from. Once picked, the user will be prompted with a question for quantity. Once the user finishes the inputs, the program will look into the database to determine a total bill or not enough in inventory then will go to the main menu for main options
+
 > **QUIT:** Allows the user to terminate the program
  
 Aller-Jeeves is a food application created to help alleviate the stress felt by individuals and families with dietary and/or allergy restrictions. Whether it is to find something new and delicious or wanting to find recipes for everyone to enjoy together. Next time someone ask what can you eat, introduce them to Aller-Jeeves, where our recipes will meet your needs.
