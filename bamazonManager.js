@@ -8,24 +8,25 @@ var connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
 
-  // Your username
+  //username
   user: "root",
 
-  // Your password
+  //password
   password: "",
+  //specified database
   database: "bamazon"
 });
 
 // connect to the mysql server and sql database
 connection.connect(function(err) {
+  //if error display error
   if (err) throw err;
-  console.log("logged in");
-  // run the start function after the connection is made to prompt the user
-  
+  //else run the start function after the connection 
+  //is made to prompt the user
   start();
 });
 
-// function which prompts the user for what action they should take
+// function which prompts the user to choose option from menu or quit
 function start() {
   inquirer
     .prompt({
@@ -36,40 +37,48 @@ function start() {
     })
     .then(function(answer) 
     {
-      // based on their answer, either call the bid or the post functions
+      // based on their answer, call for the specified function
       switch(answer.menu) 
       {
-
+        //call displaySaleItems() and display products
         case "View Products for Sale":
             displaySaleItems();
             break;
+        //call displayLowInventory() and display products with quanity>=5
         case "View Low Inventory":
             displayLowIneventory();
             break;
+        //call updateInventory() and update eaches for specified item
         case "Add to Inventory":
             updateInventory();
             break;
+        //call createInventory() and create new item
         case "Add New Product":
             createInventory();
             break;
+        //Quit program and display goodbye
         case "QUIT":
             console.log("\nTHAT was painful to hear, Please come again to BAMAZON!\n");
             connection.end();
             break;
+        //defaults will start up start function again
         default:
             start();
             break;
       }
-
-    });
+  });
 }
 
+//function which checks the item if the inventory is new, verifies quanities for eaches and amount,
+// asks user for a department. 
+//if all is valid the program will ask user to create inventory
 function createInventory() 
 {
+  //look at data from the products table from the database
   connection.query("SELECT * FROM products", function(err, results) 
-  {
+  { //if error display error for user
     if (err) throw err;
-   // prompt for info about the item being put up for auction
+   //if no error asks user for a series of questions to create new inventory
   inquirer
     .prompt([
       {
@@ -110,6 +119,7 @@ function createInventory()
         type: "input",
         message: "How much for each item?",
         validate: function(value) {
+          //verifies the answer was a number
           if (isNaN(value) === false) {
             return true;
           }
@@ -122,6 +132,7 @@ function createInventory()
         type: "input",
         message: "How many do you have in inventory to start?",
         validate: function(value) {
+          //verifies the answer was a price
           if (isNaN(value) === false) {
             return true;
           }
@@ -134,7 +145,9 @@ function createInventory()
     .then(function(answer) 
     {
       console.log("Creating a new item...\n");
+      //talk to the database
       var query = connection.query(
+        //give a set of instructions to create a new item in the database
         "INSERT INTO products SET ?",
         {
           product_name: answer.name,
@@ -143,26 +156,33 @@ function createInventory()
           stock_quantity: answer.inventory
         },
         function(err, res) {
-          console.log(res.affectedRows + " product inserted!\n");
+          //if not error tell user how many items created
+          console.log(res.affectedRows + " item created!\n");
+          //then go back to the main menu
           start();
         }
       );
     });
   });
 }
-
+//function update inventory goes through the database and 
+//give the user all the options of items to update inventory
+//then the user can update the value of the inventory
 function updateInventory() 
 {
+  //talk to the database to get all the items in the database
   connection.query("SELECT * FROM products", function(err, results) 
-  {
+  { //if error display error for user
     if (err) throw err;
-   // prompt for info about the item being put up for auction
+   //if there is a connection go ahead and ask user a series 
+   //of questions to update inventory
   inquirer
     .prompt([
       {
         message: "Which item do you want?",
           name: "name",
           type: "list",
+          //go ahead and create an array for user to pick item to update
           choices: function() 
           {
             var choiceArray = [];
@@ -177,30 +197,34 @@ function updateInventory()
         name: "amt",
         type: "input",
         message: "How many do you want to add to the current inventory?",
+        //go ahead and check if the user has a valid number
         validate: function(value) 
         {
           if (isNaN(value) === false) {
             return true;
           }
+         console.log("\nI am sorry that was not a valid value for the item, please try again!");
           return false;
         }
       }
     ])
+    //once the user completes the series of questions lets go ahead and update
     .then(function(answer) 
     {
       console.log("Updating item eaches...\n");
 
-       //var chosenItem;
+       //first find the item in the database by using an linear search
         for (var i = 0; i < results.length; i++) 
         {
           if (results[i].product_name === answer.name) {
             var chosenItem = results[i];
           }
         }
+        //once item is found lets go ahead and update the eaches
       var query = connection.query(
         "UPDATE products SET ? WHERE ?",
         [
-          {
+          { //stock_quantity= current quantity + updated amount
             stock_quantity: parseInt(chosenItem.stock_quantity)+ parseInt(answer.amt)
           },
           {
@@ -208,56 +232,60 @@ function updateInventory()
           }
         ],
         function(err, res) {
-          console.log(res.affectedRows + " products updated!\n");
-          // Call deleteProduct AFTER the UPDATE completes
+          //if no error go ahead and update the user with the update
+          console.log(res.affectedRows + " item eaches updated!\n");
+          //then go back to the main menu
           start();
         }
       );
     });
   });
 }
-
+//the function displayLowInventory checks the inventory of each item in the database
+//and only displays the items that have the quantity of 5 or more in stock_quantity
 function displayLowIneventory()
 {
   console.log("diplaying all items with stock_quantity greater than or equal to 5 eaches...\n");
+  //talk to the database and search for each product
   connection.query("SELECT * FROM products", function(err, res) {
+    //if an error go ahead and display it to the user
     if (err) throw err;
-
-console.log("item_id  product_name  department_name  price  stock_quantity");
-console.log("-------------------------------------------------------------");
+    //display the main content
+    console.log("item_id  product_name  department_name  price  stock_quantity");
+    console.log("-------------------------------------------------------------");
     for (var i = 0; i < res.length; i++) 
-    {
+    { //if the stock is >=5 display it
       if(res[i].stock_quantity>=5)
     {
     // Include the ids, names, and prices of products for sale.
       console.log(res[i].item_id + " \t " + res[i].product_name + " \t " + res[i].department_name + " \t " + res[i].price + " \t " + res[i].stock_quantity);
     }
-    
+    //else do not add to the list
     }
     console.log("-------------------------------------------------------------");
+     //once done go back to the main
      start();
-    //requestOrder();
   });
-
 }
 
-//display all items for sale
+//displays all items for sale
 function displaySaleItems() 
 {
   console.log("diplaying all items for sale...\n");
+  //go ahead and talk to the database
   connection.query("SELECT * FROM products", function(err, res) {
+    //if error go ahead and throw an error for the user
     if (err) throw err;
-
-console.log("item_id  product_name  department_name  price  stock_quantity");
-console.log("-------------------------------------------------------------");
+    //display the main content
+    console.log("item_id  product_name  department_name  price  stock_quantity");
+    console.log("-------------------------------------------------------------");
     for (var i = 0; i < res.length; i++) 
     {
-
-      // Include the ids, names, and prices of products for sale.
+      // displays the ids, names, and prices of products for sale.
       console.log(res[i].item_id + " \t " + res[i].product_name + " \t " + res[i].department_name + " \t " + res[i].price + " \t " + res[i].stock_quantity);
     }
     console.log("-------------------------------------------------------------");
+     //once done with the display go ahead and return to the main menu
      start();
-    //requestOrder();
   });
 }
