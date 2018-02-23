@@ -2,8 +2,6 @@
 var mysql = require("mysql");
 //requires inquirer npm before running
 var inquirer = require("inquirer");
-var columnify = require("columnify")
-
 
 // create a connection with the sql database
 var connection = mysql.createConnection({
@@ -20,17 +18,121 @@ var connection = mysql.createConnection({
 
 // connect to the mysql server and sql database
 connection.connect(function(err) {
-	//throw an error if no connection
   if (err) throw err;
-   //if we make a connect display
-  console.log("connected as id " + connection.threadId);
-  //close connection
-  displaySaleItems();
-  //connection.end();
-  //lets proceed with the program
+  console.log("logged in");
   // run the start function after the connection is made to prompt the user
-
+  
+  start();
 });
+
+// function which prompts the user for what action they should take
+function start() {
+  console.log("\n=======================Main Page=======================");
+  inquirer
+    .prompt({
+      name: "buyOrQuit",
+      type: "rawlist",
+      message: "Welcome to BAMAZON, How may I get your order?\n",
+      choices: ["BUY", "QUIT"]
+    })
+    .then(function(answer) {
+      // based on their answer, either call the bid or the post functions
+      if (answer.buyOrQuit.toUpperCase() === "BUY") 
+      {
+        displaySaleItems();
+        
+      }
+      else {
+        console.log("\nTHAT was painful to hear, Please come again to BAMAZON!\n");
+        connection.end();
+      }
+    });
+}
+
+function endConnection()
+{
+  connection.end();
+}
+
+function requestOrder()
+{
+  // query the database for all items being auctioned
+  connection.query("SELECT * FROM products", function(err, results) 
+  {
+    if (err) throw err;
+    // once you have the items, prompt the user for which they'd like to bid on
+    inquirer
+      .prompt([
+        {
+          message: "Which item do you want?",
+          name: "choice",
+          type: "list",
+          choices: function() 
+          {
+            var choiceArray = [];
+            for (var i = 0; i < results.length; i++) 
+            {
+              choiceArray.push(results[i].product_name);
+            }
+            return choiceArray;
+          }
+          
+        },
+        {
+          name: "bid",
+          type: "input",
+          message: "How many would you like?",
+          validate: function(value) {
+          if (isNaN(value) === false) {
+            return true;
+          }
+          return false;
+         }
+        }
+      ])
+      .then(function(answer) 
+      {
+         // get the information of the chosen item
+        //var chosenItem;
+        for (var i = 0; i < results.length; i++) 
+        {
+          if (results[i].product_name === answer.choice) {
+            var chosenItem = results[i];
+          }
+        }
+
+        // determine if bid was high enough
+        if (chosenItem.stock_quantity >= parseInt(answer.bid)) 
+        {
+          // bid was high enough, so update db, let the user know, and start over
+          connection.query(
+            "UPDATE products SET ? WHERE ?",
+            [
+              {
+                stock_quantity: chosenItem.stock_quantity -answer.bid
+              },
+              {
+                item_id: chosenItem.item_id
+              }
+            ],
+            function(error) {
+              if (error) throw err;
+              console.log("Thank you for buying at BAMAZON. Order placed successfully!");
+              start();
+            }
+          );
+        }
+        else {
+          // bid wasn't high enough, so apologize and start over
+          console.log("\nInsufficient quantity!\nI am sorry we do not have enough in inventory. Please find something else :(.\n ..going back to the main page");
+          start();
+        }
+        
+      });
+    });
+}
+
+
 //display all items for sale
 function displaySaleItems() 
 {
@@ -42,31 +144,14 @@ console.log("item_id  product_name  department_name  price  stock_quantity");
     for (var i = 0; i < res.length; i++) 
     {
 
-    	// Include the ids, names, and prices of products for sale.
+      // Include the ids, names, and prices of products for sale.
       console.log(res[i].item_id + " \t " + res[i].product_name + " \t " + res[i].department_name + " \t " + res[i].price + " \t " + res[i].stock_quantity);
     }
     console.log("-----------------------------------");
 
-    // Log all results of the SELECT statement
-    //console.log(res);
-    connection.end();
+    requestOrder();
+
+
+
   });
 }
-//get database on js
-
-
-// Then create a Node application called bamazonCustomer.js.
-// The app should then prompt users with two messages.
-
-// The first should ask them the ID of the product they would like to buy.
-// The second message should ask how many units of the product they would like to buy.
-// Once the customer has placed the order, your application should check if your store has enough of the product to meet the customer's request.
-
-// If not, the app should log a phrase like Insufficient quantity!, and then prevent the order from going through.
-// However, if your store does have enough of the product, you should fulfill the customer's order.
-
-// This means updating the SQL database to reflect the remaining quantity.
-// Once the update goes through, show the customer the total cost of their purchase.
-
-//display all of the items available for sale. 
-//Include the ids, names, and prices of products for sale.
