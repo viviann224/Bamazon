@@ -8,7 +8,7 @@
 
 The program should run automatically.
 
-<p align="center"><img height="400" src="https://thumbs.gfycat.com/LastingPleasingCorydorascatfish-size_restricted.gif"  alt="choices"></p>
+<p align="center"><img src="https://thumbs.gfycat.com/LastingPleasingCorydorascatfish-size_restricted.gif"  alt="choices"></p>
 
 If the program is not running automatically, please make sure you have all the prerequisites listed below.
 
