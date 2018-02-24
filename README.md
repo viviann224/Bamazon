@@ -8,7 +8,7 @@
 
 The program should run automatically.
 
-<p align="center"><img height="300" src=https://thumbs.gfycat.com/LastingPleasingCorydorascatfish-size_restricted.gif"  alt="choices"></p>
+<p align="center"><img height="300" src="https://thumbs.gfycat.com/LastingPleasingCorydorascatfish-size_restricted.gif"  alt="choices"></p>
 
 If the program is not running automatically, please make sure you have all the prerequisites listed below.
 
@@ -49,7 +49,7 @@ lets user buy an item  |   **View Low Inventory:** displays all items in the dat
 
 **CUSTOMER LEVEL DEMO**
 ><p><img src="https://thumbs.gfycat.com/OrganicReadyChicken-size_restricted.gif" height="300"></p>
-
+>
 ><p><img src="https://thumbs.gfycat.com/UnitedTatteredHorse-size_restricted.gif" height="300"></p>
 
 **Manger Level**
@@ -67,9 +67,9 @@ lets user buy an item  |   **View Low Inventory:** displays all items in the dat
 **MANAGER LEVEL DEMO**
 
 >![managerIntro](https://thumbs.gfycat.com/ImmenseUniformFieldmouse-size_restricted.gif)
-
+>
 ><p><img src="https://thumbs.gfycat.com/LoneLazyBluebird-size_restricted.gif" height="300"></p>
-
+>
 ><p><img src="https://thumbs.gfycat.com/RareVainBrownbutterfly-size_restricted.gif" height="300"></p>
 
 **BUILT WITH**:
