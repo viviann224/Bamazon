@@ -14,7 +14,7 @@ CREATE TABLE products(
 );
 USE bamazon;
 INSERT INTO products (item_id, product_name, department_name, price, stock_quantity) 
-VALUES ("00001", "BullDog Treats", "DOG Depo", 10.00, 10);
+VALUES ("00001", "Treats", "DOG Depo", 10.00, 10);
 
 INSERT INTO products (item_id, product_name, department_name, price, stock_quantity) 
 VALUES ("00002", "Wet Wipes", "House Depo", 20.00, 10);
@@ -32,10 +32,10 @@ INSERT INTO products (item_id, product_name, department_name, price, stock_quant
 VALUES ("00006", "Cookie Cutter", "House Depo", 1, 20);
 
 INSERT INTO products (item_id, product_name, department_name, price, stock_quantity) 
-VALUES ("00007", "Bib", "Baby Depo", 1, 20);
+VALUES ("00007", "Baby Bib", "Baby Depo", 1, 20);
 
 INSERT INTO products (item_id, product_name, department_name, price, stock_quantity) 
-VALUES ("00008", "Espresso Machine", "House Depo", 500, 2);
+VALUES ("00008", "Coffee Machine", "House Depo", 500, 2);
 
 INSERT INTO products (item_id, product_name, department_name, price, stock_quantity) 
 VALUES ("00009", "Dog Shampoo", "Dog Depo", 5, 13);
