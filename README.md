@@ -27,7 +27,7 @@ BAMAZON was created showcases the use of a SQL database  in a Node.js enviroment
 
 **HOW TO USE**:
 Here at BAMAZON  there are two modes, a customer and a manager level.
-<p align="center">  <img height="200" src="/readMeImg/files.png" alt="choices"></p>
+<p align="center"> <img height="200" src="/readMeImg/files.png" alt="choices"></p>
 
 
 Customer Level | Manager Level
@@ -43,20 +43,16 @@ lets user buy an item  |   **View Low Inventory:** displays all items in the dat
 
 **Customer Level**
 
-![customerIntro](https://thumbs.gfycat.com/OrganicReadyChicken-size_restricted.gif)
-
-![customerDemo](https://thumbs.gfycat.com/UnitedTatteredHorse-size_restricted.gif)
 > **BUY:** The inventory will display with the corresponding an id, name, department, price, and quantity then the user will be asked a list of items to choose from. Once picked, the user will be prompted with a question for quantity. Once the user finishes the inputs, the program will look into the database to determine a total bill or not enough in inventory then will go to the main menu for main options
 >
 > **QUIT:** Allows the user to terminate the program
 
+**CUSTOMER LEVEL DEMO**
+<p align="center"><img src="https://thumbs.gfycat.com/OrganicReadyChicken-size_restricted.gif" height=200">
+
+<img src="https://thumbs.gfycat.com/UnitedTatteredHorse-size_restricted.gif" height=200"></p>
+
 **Manger Level**
-
-![managerIntro](https://thumbs.gfycat.com/ImmenseUniformFieldmouse-size_restricted.gif)
-
-![mangerDemo1](https://thumbs.gfycat.com/LoneLazyBluebird-size_restricted.gif)
-
-![managerDemo2](https://thumbs.gfycat.com/RareVainBrownbutterfly-size_restricted.gif)
 
 >**View Products for Sale:** Reads data from the SQL database and displays all items from the database with an associated  id, name, department, price, and quantity.
 >
@@ -67,6 +63,14 @@ lets user buy an item  |   **View Low Inventory:** displays all items in the dat
 >**Add New Product:** the program will ask for a new item request. The user will input an item request, the program checks the requested item against the current database to see if the item already exsists. The user will continue to prompt until there is a new item. If the item is new, then the user will be prompted with which department the item belongs, what is the associated price of the item, and how much is in the inventory for the item.
 >
 > **QUIT:** Allows the user to terminate the program
+
+**MANAGER LEVEL DEMO**
+
+![managerIntro](https://thumbs.gfycat.com/ImmenseUniformFieldmouse-size_restricted.gif)
+
+![mangerDemo1](https://thumbs.gfycat.com/LoneLazyBluebird-size_restricted.gif)
+
+![managerDemo2](https://thumbs.gfycat.com/RareVainBrownbutterfly-size_restricted.gif)
 
 **BUILT WITH**:
 - Sublime Text
