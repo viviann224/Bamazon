@@ -1,59 +1,59 @@
 # Bamazon
 **GETTING STARTED**:
+1. Clone the repo: **https://github.com/viviann224/Bamazon.git**
+2. In Terminal/Bash in the Bamazon file (location where the **README.md** is located) initialize the npm file via "npm install"
+3. Run either the Customer Level or the Manager Level js file via Terminal/Bash
+    * for **Customer Level** in Terminal/Bash type in "node bamazonCustomer.js"
+    * for **Manger Level** in Terminal/Bash type in "node bamazonManager.js"
+
 The program should run automatically.
 
 If the program is not running automatically, please make sure you have all the prerequisites listed below.
 
 **STATEMENT OF PURPOSE**:
-BAMAZON is a store like Amazon where the program runs on Node.js and uses the SQL database. Here at BAMAZON there are two modes, a customer and a manager level.
+**BAMAZON** is a store like Amazon where the program runs on Node.js and uses the SQL database. **BAMAZON**  will take orders from the customers and update the stock from the store's inventory.
 
-<p align="center">  <img height="100" src="/readMeImg/files.png" alt="choices"></p>
+**BAMAZON** was created showcases the use of a SQL database  in a Node.js enviroment to reflect real life applications of database management skills and advanced level user input validation via npm package inquirer. **BAMAZON** has two level of use, a public level which is the "Customer Level" where the user  can buy items in the inventory and a "Manager Level" where the user can view the items for sale, view items that is low in inventory, the capability to update the inventory amount, and create a new item into the inventory.
+
+**PREREQUISITES**:
+- SQL Database (perfered on Sequel Pro)
+- Node.js
+- JavaScript
+- Terminal / Bash / command line prompt
+- Capability to run files in package.json (inquirer, mysql)
+- Perfered viewing in English language :us:
+
+**HOW TO USE**:
+Here at **BAMAZON**  there are two modes, a customer and a manager level.
+<p align="center">  <img height="200" src="/readMeImg/files.png" alt="choices"></p>
 
 
 Customer Level | Manager Level
 ------------ | -------------
 **Main Menu:** Lets the user either BUY or QUIT |  **Main Menu:** Lets the user  View Products for Sale, View Low Inventory, Add to inventory, Add New Products, or QUIT
- **BUY:** asks user which item and quantity from inventory to buy if in stock a bill is created else tells user not enough in stock | **View Products for Sale:** displays the current products in the database
- lets user buy an item  |   **View Low Inventory:** displays all items in the database that contains at least 5 eaches in stock
- **QUIT** allows the user to terminate the program  | **Add to Inventory:** updates an current item by how much the user wants to give/take
- |  **Add New Product:** allows the user to create new item into inventory with an id, name, department, price, and quantity
- |  **QUIT** allows the user to terminate the program
+**BUY:** asks user which item and quantity from inventory to buy if in stock a bill is created else tells user not enough in stock | **View Products for Sale:** displays the current products in the database
+lets user buy an item  |   **View Low Inventory:** displays all items in the database that contains at least 5 eaches in stock
+**QUIT** allows the user to terminate the program  | **Add to Inventory:** updates an current item by how much the user wants to give/take
+|  **Add New Product:** allows the user to create new item into inventory with an id, name, department, price, and quantity
+|  **QUIT** allows the user to terminate the program
 
 
- 
+
 **Customer Level**
 > **BUY:** The inventory will display with the corresponding an id, name, department, price, and quantity then the user will be asked a list of items to choose from. Once picked, the user will be prompted with a question for quantity. Once the user finishes the inputs, the program will look into the database to determine a total bill or not enough in inventory then will go to the main menu for main options
 >
 > **QUIT:** Allows the user to terminate the program
- 
-Aller-Jeeves is a food application created to help alleviate the stress felt by individuals and families with dietary and/or allergy restrictions. Whether it is to find something new and delicious or wanting to find recipes for everyone to enjoy together. Next time someone ask what can you eat, introduce them to Aller-Jeeves, where our recipes will meet your needs.
 
-Aller-Jeeves was created to showcases the use of APIs from Yummly and Neutrino by pulling AJAX requests to create Aller-Jeeves. Learning to use JavaScript Animation, Anime JS, and deploying from Firebase Database. Aller-Jeeves is a group effort to provide a polished UI and specific search options for the user.
-
-Aller-Jeeves contains recipe cards with the recipes, a picture of the dish, and a bookmarking options (when the user logs in) on the front of the card. When the user clicks on the recipe the card flips over to the back to display a list of ingredients and a button linked to the recipe.
-
-**PREREQUISITES**:
-- Google Chrome Internet Browser
-- jQuery enabled on Google Chrome
-- JavaScript Animation
-- JavaScript enabled on Google Chrome
-- Access to Google Font packages
-- Access to Yummly and Neutrino API
-- Access to Firebase database
-- CDN support on Bootstrap
-- Perfered viewing in English language :us:
-
-**HOW TO USE**:
-Once pages loads, the user is able to search for recipes by the name of a specific recipe or recipes containing a certain ingredient. The user also has the ability to further narrow down the search by checking the optional checkboxes based on any allergy and/or dietary restrictions.
-
-The results are then displayed on cards with the name of the recipe, an image of the recipe dish, and a bookmark button option once the user logs in. Once the user clicks on the recipe card, the card will flip over to the back where a list of the ingredients are displayed with a button.
-
-If the user clicks the button on the back of the card, a new tab will open and take the user to the  original source of the recipe where a detailed set of cooking instructions are available to the user.
-
-If the user logs into Gmail, they will have the ability to save specific recipe cards by clicking on the fork and knife icon. Those cards are stored in their bookmarks and can be reviewed at another time by clicking on the bookmark button at the top of the page.
-In addition to the amazing recipes, in the top right of the page, there is a "Conversion Table"! This allows the user to further customize their cooking experience by modifying ingredient amounts, with respect to volume and mass, for precise measurements that meet their needs.
-
-If the user wants to search for a different recipe, there is a search box, followed by a dropdown menu for the dietary/allergy restrictions, and a submission button to initiate a new search. This will become the main page for the user's interaction for recipe requests after the first search request is complete.
+**Manger Level**
+>**View Products for Sale:** Reads data from the SQL database and displays all items from the database with an associated  id, name, department, price, and quantity.
+>
+>**View Low Inventory:** Reads the data from the SQL database and looks at each item's quantity. if the item's quanity is at least 5, then the item is displayed with the associated id, name, department, price, and quantity.
+>
+>**Add to Inventory:** The user will choose a list of re-exsisting data from the SQL database of items and gives the user an option to update the current inventory for the specified database.
+>
+>**Add New Product:** the program will ask for a new item request. The user will input an item request, the program checks the requested item against the current database to see if the item already exsists. The user will continue to prompt until there is a new item. If the item is new, then the user will be prompted with which department the item belongs, what is the associated price of the item, and how much is in the inventory for the item.
+>
+> **QUIT:** Allows the user to terminate the program
 
 **BUILT WITH**:
 - Sublime Text
