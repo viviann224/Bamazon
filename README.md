@@ -8,7 +8,7 @@
 
 The program should run automatically.
 
-![start](https://thumbs.gfycat.com/LastingPleasingCorydorascatfish-size_restricted.gif)
+<p align="center"><img height="300" src=https://thumbs.gfycat.com/LastingPleasingCorydorascatfish-size_restricted.gif"  alt="choices"></p>
 
 If the program is not running automatically, please make sure you have all the prerequisites listed below.
 
@@ -48,9 +48,9 @@ lets user buy an item  |   **View Low Inventory:** displays all items in the dat
 > **QUIT:** Allows the user to terminate the program
 
 **CUSTOMER LEVEL DEMO**
-<p><img src="https://thumbs.gfycat.com/OrganicReadyChicken-size_restricted.gif" height=300"></p>
+><p><img src="https://thumbs.gfycat.com/OrganicReadyChicken-size_restricted.gif" height="300"></p>
 
-<p><img src="https://thumbs.gfycat.com/UnitedTatteredHorse-size_restricted.gif" height=300"></p>
+><p><img src="https://thumbs.gfycat.com/UnitedTatteredHorse-size_restricted.gif" height="300"></p>
 
 **Manger Level**
 
@@ -66,11 +66,11 @@ lets user buy an item  |   **View Low Inventory:** displays all items in the dat
 
 **MANAGER LEVEL DEMO**
 
-![managerIntro](https://thumbs.gfycat.com/ImmenseUniformFieldmouse-size_restricted.gif)
+>![managerIntro](https://thumbs.gfycat.com/ImmenseUniformFieldmouse-size_restricted.gif)
 
-![mangerDemo1](https://thumbs.gfycat.com/LoneLazyBluebird-size_restricted.gif)
+><p><img src="https://thumbs.gfycat.com/LoneLazyBluebird-size_restricted.gif" height="300"></p>
 
-![managerDemo2](https://thumbs.gfycat.com/RareVainBrownbutterfly-size_restricted.gif)
+><p><img src="https://thumbs.gfycat.com/RareVainBrownbutterfly-size_restricted.gif" height="300"></p>
 
 **BUILT WITH**:
 - Sublime Text
