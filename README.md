@@ -48,9 +48,9 @@ lets user buy an item  |   **View Low Inventory:** displays all items in the dat
 > **QUIT:** Allows the user to terminate the program
 
 **CUSTOMER LEVEL DEMO**
-<p align="center"><img src="https://thumbs.gfycat.com/OrganicReadyChicken-size_restricted.gif" height=200">
+<p><img src="https://thumbs.gfycat.com/OrganicReadyChicken-size_restricted.gif" height=300"></p>
 
-<img src="https://thumbs.gfycat.com/UnitedTatteredHorse-size_restricted.gif" height=200"></p>
+<p><img src="https://thumbs.gfycat.com/UnitedTatteredHorse-size_restricted.gif" height=300"></p>
 
 **Manger Level**
 
