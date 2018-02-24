@@ -1,19 +1,21 @@
-# Bamazon
+# BAMAZON
 **GETTING STARTED**:
 1. Clone the repo: **https://github.com/viviann224/Bamazon.git**
-2. In Terminal/Bash in the Bamazon file (location where the **README.md** is located) initialize the npm file via "npm install"
+2. In Terminal/Bash in the Bamazon file (location where the **README.md** is located) initialize the npm file via "*npm install*"
 3. Run either the Customer Level or the Manager Level js file via Terminal/Bash
-    * for **Customer Level** in Terminal/Bash type in "node bamazonCustomer.js"
-    * for **Manger Level** in Terminal/Bash type in "node bamazonManager.js"
+    * for **Customer Level** in Terminal/Bash type in "*node bamazonCustomer.js*"
+    * for **Manger Level** in Terminal/Bash type in "*node bamazonManager.js*"
 
 The program should run automatically.
+
+![start](https://thumbs.gfycat.com/LastingPleasingCorydorascatfish-size_restricted.gif)
 
 If the program is not running automatically, please make sure you have all the prerequisites listed below.
 
 **STATEMENT OF PURPOSE**:
-**BAMAZON** is a store like Amazon where the program runs on Node.js and uses the SQL database. **BAMAZON**  will take orders from the customers and update the stock from the store's inventory.
+BAMAZON is a store like Amazon where the program runs on Node.js and uses the SQL database. BAMAZON  will take orders from the customers and update the stock from the store's inventory.
 
-**BAMAZON** was created showcases the use of a SQL database  in a Node.js enviroment to reflect real life applications of database management skills and advanced level user input validation via npm package inquirer. **BAMAZON** has two level of use, a public level which is the "Customer Level" where the user  can buy items in the inventory and a "Manager Level" where the user can view the items for sale, view items that is low in inventory, the capability to update the inventory amount, and create a new item into the inventory.
+BAMAZON was created showcases the use of a SQL database  in a Node.js enviroment to reflect real life applications of database management skills and advanced level user input validation via npm package inquirer. BAMAZON has two level of use, a public level which is the "Customer Level" where the user  can buy items in the inventory and a "Manager Level" where the user can view the items for sale, view items that is low in inventory, the capability to update the inventory amount, and create a new item into the inventory.
 
 **PREREQUISITES**:
 - SQL Database (perfered on Sequel Pro)
@@ -24,7 +26,7 @@ If the program is not running automatically, please make sure you have all the p
 - Perfered viewing in English language :us:
 
 **HOW TO USE**:
-Here at **BAMAZON**  there are two modes, a customer and a manager level.
+Here at BAMAZON  there are two modes, a customer and a manager level.
 <p align="center">  <img height="200" src="/readMeImg/files.png" alt="choices"></p>
 
 
@@ -40,6 +42,7 @@ lets user buy an item  |   **View Low Inventory:** displays all items in the dat
 
 
 **Customer Level**
+![customerIntro](https://thumbs.gfycat.com/OrganicReadyChicken-size_restricted.gif)
 > **BUY:** The inventory will display with the corresponding an id, name, department, price, and quantity then the user will be asked a list of items to choose from. Once picked, the user will be prompted with a question for quantity. Once the user finishes the inputs, the program will look into the database to determine a total bill or not enough in inventory then will go to the main menu for main options
 >
 > **QUIT:** Allows the user to terminate the program
@@ -57,14 +60,10 @@ lets user buy an item  |   **View Low Inventory:** displays all items in the dat
 
 **BUILT WITH**:
 - Sublime Text
-- Chrome DevTools
-- Bootstrap
-- Adobe Photoshop CC 2015.5
-- Firebase
-- Google fonts
+-Sequel Pro
 
 **VERSION**:
-This is the first version of Aller-Jeeves
+This is the first version of BAMAZON
 
 **LICENSE**:
 This project is licensed under GitHub.
