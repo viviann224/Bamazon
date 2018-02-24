@@ -42,12 +42,17 @@ lets user buy an item  |   **View Low Inventory:** displays all items in the dat
 
 
 **Customer Level**
+
 ![customerIntro](https://thumbs.gfycat.com/OrganicReadyChicken-size_restricted.gif)
+
 > **BUY:** The inventory will display with the corresponding an id, name, department, price, and quantity then the user will be asked a list of items to choose from. Once picked, the user will be prompted with a question for quantity. Once the user finishes the inputs, the program will look into the database to determine a total bill or not enough in inventory then will go to the main menu for main options
 >
 > **QUIT:** Allows the user to terminate the program
 
 **Manger Level**
+
+![managerIntro](https://thumbs.gfycat.com/ImmenseUniformFieldmouse-size_restricted.gif)
+
 >**View Products for Sale:** Reads data from the SQL database and displays all items from the database with an associated  id, name, department, price, and quantity.
 >
 >**View Low Inventory:** Reads the data from the SQL database and looks at each item's quantity. if the item's quanity is at least 5, then the item is displayed with the associated id, name, department, price, and quantity.
