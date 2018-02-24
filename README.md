@@ -33,11 +33,11 @@ Here at BAMAZON  there are two modes, a customer and a manager level.
 Customer Level | Manager Level
 ------------ | -------------
 **Main Menu:** Lets the user either BUY or QUIT |  **Main Menu:** Lets the user  View Products for Sale, View Low Inventory, Add to inventory, Add New Products, or QUIT
-**BUY:** asks user which item and quantity from inventory to buy if in stock a bill is created else tells user not enough in stock | **View Products for Sale:** displays the current products in the database
-lets user buy an item  |   **View Low Inventory:** displays all items in the database that contains at least 5 eaches in stock
-**QUIT** allows the user to terminate the program  | **Add to Inventory:** updates an current item by how much the user wants to give/take
-|  **Add New Product:** allows the user to create new item into inventory with an id, name, department, price, and quantity
-|  **QUIT** allows the user to terminate the program
+**BUY:** asks user item and quantity from inventory to buy if in stock a bill is created else tells user not enough in stock | **View Products for Sale:** displays the current products in the database
+ **QUIT** allows the user to terminate the program  | **View Low Inventory:** displays all items in the database that contains at least 5 eaches in stock
+     | **Add to Inventory:** updates an current item by how much the user wants to give/take
+    |  **Add New Product:** allows the user to create new item into inventory with an id, name, department, price, and quantity
+   |  **QUIT** allows the user to terminate the program
 
 
 
